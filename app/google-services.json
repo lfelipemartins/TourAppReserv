@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "215263270460",
+    "firebase_url": "https://tourapp-ebcd4.firebaseio.com",
+    "project_id": "tourapp-ebcd4",
+    "storage_bucket": "tourapp-ebcd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215263270460:android:af4ec73d0a816f43",
+        "android_client_info": {
+          "package_name": "felipemartins.com.br.tourappreserv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215263270460-c4f053l81fmro5com2sl1kb10gicqatc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "felipemartins.com.br.tourappreserv",
+            "certificate_hash": "86ca5c6cd84e9175c7ca469af2283590987bc345"
+          }
+        },
+        {
+          "client_id": "215263270460-k9mnco1a7vn2v2fcauej9hiv1qrt86tn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxaJEuXMYQ0Svj3gG829m9iQDMv895zL0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215263270460-k9mnco1a7vn2v2fcauej9hiv1qrt86tn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
