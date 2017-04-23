@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -41,12 +40,12 @@ public class CadastroActivity extends AppCompatActivity {
         String cat = categoria.getText().toString();
         String url = urlimg.getText().toString();
 
-        Local local = new Local(nom, cur, lon, loc, cat, url);
-        local.save();
+        Local localidade = new Local(nom, cur, lon, loc, cat, url);
+        localidade.save();
         Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_SHORT).show();
 
-        Intent i = new Intent(this, ListActivity.class);
-        startActivity(i);
+        //Intent i = new Intent(this, ListActivity.class);
+        //startActivity(i);
 
 
 

@@ -8,17 +8,10 @@ import com.orm.SugarRecord;
 
 public class Local extends SugarRecord {
 
-    public String nome;
+    public String nome, descricaoCurta, descricaolonga,local, categoria, urlimg;
 
-    public String descricaoCurta, descricaolonga;
 
-    public String local;
-
-    public String categoria;
-
-    public String urlimg;
-
-    public Local(String ferinha, String s, String s1, String tambaú, String comidas){}
+    public Local(){}
 
     public Local(String nome, String descricaoCurta, String descricaolonga, String local, String categoria, String urlimg){
         this.nome = nome;
