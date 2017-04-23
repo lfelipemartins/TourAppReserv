@@ -1,18 +1,49 @@
 package felipemartins.com.br.tourappreserv;
 
+import com.orm.SugarRecord;
+
 /**
  * Created by lfeli on 23/04/2017.
  */
 
-public class Local {
+public class Local extends SugarRecord {
 
-    private String nome;
+    public String nome;
 
-    private String descricaoCurta, descricaolonga;
+    public String descricaoCurta, descricaolonga;
 
-    private String local;
+    public String local;
 
-    public Local(){}
+    public String categoria;
+
+    public String urlimg;
+
+    public Local(String ferinha, String s, String s1, String tambaú, String comidas){}
+
+    public Local(String nome, String descricaoCurta, String descricaolonga, String local, String categoria, String urlimg){
+        this.nome = nome;
+        this.descricaoCurta = descricaoCurta;
+        this.descricaolonga = descricaolonga;
+        this.local = local;
+        this.categoria = categoria;
+        this.urlimg = urlimg;
+    }
+
+    public String getUrlimg() {
+        return urlimg;
+    }
+
+    public void setUrlimg(String urlimg) {
+        this.urlimg = urlimg;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
     public String getDescricaoCurta() {
         return descricaoCurta;

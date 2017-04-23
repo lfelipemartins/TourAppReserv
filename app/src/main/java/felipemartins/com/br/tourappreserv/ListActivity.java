@@ -1,5 +1,7 @@
 package felipemartins.com.br.tourappreserv;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,10 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
 
         setaButtons();
         listenersButtons();
+
+
+
+
 
     }
 
@@ -68,21 +75,32 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
      */
     public void listenersButtons() {
 
+
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Cria uma nova pessoa chamada Renan Teles
-                Local local1 = new Local();
-                local1.setNome("Feirinha");
+                //Intent i = new Intent(this, CadastroActivity.class);
+                //startActivity(i);
 
-                //Adiciona a pessoa1 e avisa o adapter que o conteúdo
+              //  Local local1 = new Local();
+               // local1.setNome("Feirinha");
+
+                //Adiciona a lista e avisa o adapter que o conteúdo
                 //da lista foi alterado
-                locaisListas.add(local1);
-                adapter.notifyDataSetChanged();
+                //locaisListas.add(local1);
+                //adapter.notifyDataSetChanged();
 
             }
         });
+    }
+
+    public void cadastrobutton (View v){
+
+        Intent i = new Intent(this, CadastroActivity.class);
+        startActivity(i);
+
     }
 
 
