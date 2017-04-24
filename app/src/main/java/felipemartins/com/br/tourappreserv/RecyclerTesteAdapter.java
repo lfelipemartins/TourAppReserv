@@ -33,9 +33,10 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
 
     @Override
     public void onBindViewHolder(RecyclerTesteViewHolder viewHolder, int i) {
-        Local pessoa = mList.get(i);
+        Local local = mList.get(i);
 
-        viewHolder.viewNome.setText(pessoa.getNome());
+        viewHolder.viewNome.setText(local.getNome());
+        viewHolder.viewCurta.setText(local.getDescricaoCurta());
 
     }
 
@@ -48,11 +49,13 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
     protected class RecyclerTesteViewHolder extends RecyclerView.ViewHolder {
 
         protected TextView viewNome;
+        protected TextView viewCurta;
 
         public RecyclerTesteViewHolder(final View itemView) {
             super(itemView);
 
             viewNome = (TextView) itemView.findViewById(R.id.textview_nome);
+            viewCurta = (TextView) itemView.findViewById(R.id.textview_desccurta);
 
             //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {

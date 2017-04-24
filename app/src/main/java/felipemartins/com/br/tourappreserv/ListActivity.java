@@ -37,8 +37,22 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         setaButtons();
         listenersButtons();
 
+        List<Local> loc = Local.listAll(Local.class);
+
+        for (Local a: loc){
+            Local lugar = new Local();
+            lugar.setNome(a.getNome().toString());
+
+            locaisListas.add(lugar);
+            adapter.notifyDataSetChanged();
+        }
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
     }
@@ -100,6 +114,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
 
         Intent i = new Intent(this, CadastroActivity.class);
         startActivity(i);
+        finish();
 
     }
 

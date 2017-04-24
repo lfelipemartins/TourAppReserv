@@ -12,20 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcCompat="@color/colorPrimary"
-        android:id="@+id/imageButton"
-        android:layout_weight="1" />
+        android:id="@+id/imageButton_destaques"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="destaques"/>
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcCompat="@color/colorAccent"
-        android:id="@+id/imageButton2"
-        android:layout_weight="1" />
+        android:id="@+id/imageButton_promo"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="promo"/>
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcCompat="@color/colorPrimaryDark"
-        android:id="@+id/imageButton3"
-        android:layout_weight="1" />
+        android:id="@+id/imageButton_tudo"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="tudo"/>
 </LinearLayout>
