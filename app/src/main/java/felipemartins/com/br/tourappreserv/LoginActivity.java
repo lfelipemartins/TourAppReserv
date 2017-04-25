@@ -33,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
 
+        user1 = (EditText)findViewById(R.id.email);
+        password = (EditText)findViewById(R.id.password);
+
 
     }
 
@@ -52,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println(userJsonString);
 
 
-        String response = web.post("http://www.eukip.com/aulas/UserAuth/Home", userJsonString);
+        String response = web.post("http://www.eukip.com/aulas/UserAuth/Home/PostAuth", userJsonString);
         System.out.println(response);
 
         //try {
