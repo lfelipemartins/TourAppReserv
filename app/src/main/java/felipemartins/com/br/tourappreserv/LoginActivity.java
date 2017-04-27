@@ -21,6 +21,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,11 +58,14 @@ public class LoginActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String userJsonString = gson.toJson(user);
 
+        String jsonvono = "{\"json\":" + userJsonString + "}";
+
         System.out.println(userJsonString);
+        System.out.println(jsonvono);
 
-
-        String response = web.post("http://www.eukip.com/aulas/UserAuth/Home/PostAuth", userJsonString);
+        String response = web.post("http://www.eukip.com/aulas/UserAuth/Home/PostAuth", jsonvono);
         System.out.println(response);
+
 
         //try {
 
