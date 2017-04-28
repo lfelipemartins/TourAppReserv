@@ -1,4 +1,4 @@
-package felipemartins.com.br.tourappreserv;
+package felipemartins.com.br.tourappreserv.models;
 
 /**
  * Created by lfeli on 24/04/2017.

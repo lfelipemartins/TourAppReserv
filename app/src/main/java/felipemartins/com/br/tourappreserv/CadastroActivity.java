@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import felipemartins.com.br.tourappreserv.models.Local;
+
 public class CadastroActivity extends AppCompatActivity {
 
     public EditText nome, curta, longa, local, categoria, urlimg;

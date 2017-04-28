@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import felipemartins.com.br.tourappreserv.models.Local;
+
 /**
  * Created by lfeli on 23/04/2017.
  */

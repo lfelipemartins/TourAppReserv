@@ -1,4 +1,4 @@
-package felipemartins.com.br.tourappreserv;
+package felipemartins.com.br.tourappreserv.models;
 
 import com.orm.SugarRecord;
 
@@ -8,26 +8,26 @@ import com.orm.SugarRecord;
 
 public class Local extends SugarRecord {
 
-    public String nome, descricaoCurta, descricaolonga,local, categoria, urlimg;
+    public String nome, descricaoCurta, descricaolonga,local, categoria, urlImg;
 
 
     public Local(){}
 
-    public Local(String nome, String descricaoCurta, String descricaolonga, String local, String categoria, String urlimg){
+    public Local(String nome, String descricaoCurta, String descricaolonga, String local, String categoria, String urlImg){
         this.nome = nome;
         this.descricaoCurta = descricaoCurta;
         this.descricaolonga = descricaolonga;
         this.local = local;
         this.categoria = categoria;
-        this.urlimg = urlimg;
+        this.urlImg = urlImg;
     }
 
-    public String getUrlimg() {
-        return urlimg;
+    public String getUrlImg() {
+        return urlImg;
     }
 
-    public void setUrlimg(String urlimg) {
-        this.urlimg = urlimg;
+    public void setUrlImg(String urlimg) {
+        this.urlImg = urlimg;
     }
 
     public String getCategoria() {
