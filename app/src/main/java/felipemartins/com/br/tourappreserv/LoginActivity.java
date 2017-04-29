@@ -25,8 +25,6 @@ import felipemartins.com.br.tourappreserv.models.User;
 public class LoginActivity  extends AppCompatActivity {
 
     public EditText password, user1;
-    String datatokenSP = "";
-    String tokenSP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +35,9 @@ public class LoginActivity  extends AppCompatActivity {
         user1 = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.password);
 
+        WebClient web = new WebClient();
 
-
+        web.lerToken(this, this);
 
     }
 
@@ -63,19 +62,9 @@ public class LoginActivity  extends AppCompatActivity {
         System.out.println(json);
 
         web.post(this, this, user, "http://www.eukip.com/aulas/UserAuth/Home/PostAuth", json);
-        while(web.getResult()==null)
-        System.out.println(web.getResult());
-        String response =web.getResult();
-    }
-
-
-    public void lerToken(){
-        SharedPreferences armazemSP = getSharedPreferences(datatokenSP, Context.MODE_PRIVATE);
-        String tokenarmazenado = "";
-        tokenSP = armazemSP.getString("token", tokenarmazenado);
-
-
-
+        //while(web.getResult()==null)
+        //System.out.println(web.getResult());
+        //String response =web.getResult();
     }
 
 
@@ -83,10 +72,9 @@ public class LoginActivity  extends AppCompatActivity {
 
 
 
+    }
 
 
 
 
-
-}
 

@@ -47,22 +47,7 @@ public class WebClient implements Callback {
                 .post(body)
                 .build();
         client.newCall(request).enqueue(this);
-/*
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
 
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                result = response.body().string();
-                System.out.print(result);
-                if (response != null){
-                    return;
-                }
-            }
-        });
-        */
         return result;
     }
 
@@ -77,7 +62,6 @@ public class WebClient implements Callback {
         result = response.body().string();
         System.out.print(result);
 
-        String datatokenSP = "";
 
         try {
 
@@ -90,21 +74,18 @@ public class WebClient implements Callback {
             user.setToken(token);
 
             if (user.getStatus().equals("ok")){
-                SharedPreferences armazemSP = PreferenceManager.getDefaultSharedPreferences(activity);
-                SharedPreferences.Editor editor = armazemSP.edit();
+                SharedPreferences sharedPref  = PreferenceManager.getDefaultSharedPreferences(activity);
+                SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("Token", user.getToken());
+
                 editor.commit();
-
-                String tokenarmazenado = "Erro de token";
-
-                //Toast.makeText(context, armazemSP.getString("Token", tokenarmazenado), Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(context, MainActivity.class);
                 context.startActivity(i);
                 activity.finish();
 
             }else{
-                //Toast.makeText(context, user.getStatus(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Ops, ocorreu algum problema, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
             }
 
 
@@ -114,7 +95,23 @@ public class WebClient implements Callback {
 
     }
 
-    public String getResult() {
-        return result;
+    public void lerToken(Context context, Activity activity) {
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
+        String tokenSP = sharedPref.getString("Token", null);
+
+
+        if (tokenSP == null) {
+            Toast.makeText(activity, "Digite seu usuário e senha para entrar", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(activity, "Você já está conectado"+tokenSP, Toast.LENGTH_LONG).show();
+
+            Intent i = new Intent(context, MainActivity.class);
+            context.startActivity(i);
+            activity.finish();
+        }
+
+
     }
 }
