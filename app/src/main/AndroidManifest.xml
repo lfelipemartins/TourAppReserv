@@ -2,10 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="felipemartins.com.br.tourappreserv">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
@@ -26,26 +25,25 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="felipemartins.com.br.tourappreserv" />
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ListActivity"
             android:label="@string/title_activity_list"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".CadastroActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".CadastroActivity" />
+        <activity
+            android:name=".DetalhesActivity"
+            android:label="@string/title_activity_detalhes"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

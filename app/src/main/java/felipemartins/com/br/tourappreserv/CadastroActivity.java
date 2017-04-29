@@ -1,6 +1,9 @@
 package felipemartins.com.br.tourappreserv;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -87,7 +90,18 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
+    public void Sair(View v) {
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("Token", "");
+
+        editor.commit();
+
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
 
 
 }

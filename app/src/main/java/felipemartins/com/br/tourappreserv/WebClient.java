@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Stack;
 
 import felipemartins.com.br.tourappreserv.models.User;
 import okhttp3.Call;
@@ -24,16 +27,13 @@ import okhttp3.Response;
 
 public class WebClient implements Callback {
 
+    public static final MediaType JSON
+            = MediaType.parse("application/json; charset=utf-8");
     public String result;
+    OkHttpClient client = new OkHttpClient();
     private Context context;
     private Activity activity;
     private User user;
-
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
-
-
-    OkHttpClient client = new OkHttpClient();
 
     public String post(Context context, Activity activity, User user, String url, String json) throws IOException {
 
@@ -41,7 +41,7 @@ public class WebClient implements Callback {
         this.activity = activity;
         this.user = user;
 
-        RequestBody body = RequestBody.create(JSON, json );
+        RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
@@ -73,23 +73,32 @@ public class WebClient implements Callback {
             user.setStatus(status);
             user.setToken(token);
 
-            if (user.getStatus().equals("ok")){
-                SharedPreferences sharedPref  = PreferenceManager.getDefaultSharedPreferences(activity);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("Token", user.getToken());
+            if (user.getStatus().equals("ok")) {
+                if (user.getSalvar().equals("ok")) {
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("Token", user.getToken());
+                    editor.putString("Salvar", user.getSalvar());
+                    editor.commit();
+                } else {
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("Token", "1");
+                    editor.putString("Salvar", "no");
 
-                editor.commit();
+                    editor.commit();
+                }
 
                 Intent i = new Intent(context, MainActivity.class);
                 context.startActivity(i);
                 activity.finish();
 
-            }else{
+            } else {
                 Toast.makeText(activity, "Ops, ocorreu algum problema, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
             }
 
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
 
         }
 
@@ -97,21 +106,20 @@ public class WebClient implements Callback {
 
     public void lerToken(Context context, Activity activity) {
 
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
-        String tokenSP = sharedPref.getString("Token", null);
+        String tokenSP = sharedPref.getString("Token", "");
 
-
-        if (tokenSP == null) {
+        if (tokenSP.equals("") || tokenSP.equals("1")) {
             Toast.makeText(activity, "Digite seu usuário e senha para entrar", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(activity, "Você já está conectado"+tokenSP, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Você já está conectado " + tokenSP, Toast.LENGTH_LONG).show();
 
             Intent i = new Intent(context, MainActivity.class);
             context.startActivity(i);
             activity.finish();
         }
-
 
     }
 }

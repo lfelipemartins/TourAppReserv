@@ -17,6 +17,16 @@
     <string name="manter_conectado">Manter conectado</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
+        <string name="nome">Nome</string>
+        <string name="email">E-mail</string>
+        <string name="desc_cur">Descrição curta</string>
+        <string name="desc_lon">Descrição longa</string>
+        <string name="local">Local (Cidade)</string>
+        <string name="urlimg">URL da imagem</string>
+
+
+
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -107,5 +117,6 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_detalhes">DetalhesActivity</string>
 
 </resources>

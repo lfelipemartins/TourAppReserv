@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,6 +27,9 @@ public class LoginActivity  extends AppCompatActivity {
 
     public EditText password, user1;
 
+    public CheckBox cbSalvar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,9 @@ public class LoginActivity  extends AppCompatActivity {
 
         user1 = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.password);
+
+        cbSalvar = (CheckBox) findViewById(R.id.checkBoxConectado);
+
 
         WebClient web = new WebClient();
 
@@ -47,6 +54,11 @@ public class LoginActivity  extends AppCompatActivity {
         WebClient web = new WebClient();
 
         User user = new User();
+        user.setSalvar("");
+
+        if (cbSalvar.isChecked()) {
+            user.setSalvar("ok");
+        }
 
         user.setLogin(user1.getText().toString());
         user.setSenha(password.getText().toString());
@@ -62,17 +74,10 @@ public class LoginActivity  extends AppCompatActivity {
         System.out.println(json);
 
         web.post(this, this, user, "http://www.eukip.com/aulas/UserAuth/Home/PostAuth", json);
-        //while(web.getResult()==null)
-        //System.out.println(web.getResult());
-        //String response =web.getResult();
-    }
-
-
-
-
-
 
     }
+
+}
 
 
 

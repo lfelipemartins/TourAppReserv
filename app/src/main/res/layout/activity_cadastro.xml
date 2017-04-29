@@ -4,12 +4,12 @@
     android:id="@+id/activity_cadastro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="felipemartins.com.br.tourappreserv.CadastroActivity"
-    android:orientation="vertical">
+    tools:context="felipemartins.com.br.tourappreserv.CadastroActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,34 +17,56 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText_nome"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:singleLine="true"
-            android:text="Nome do local" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editText_descricaocurta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:singleLine="true"
-            android:text="Descrição curta" />
+            <EditText
+                android:id="@+id/editText_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Nome do local"
+                android:inputType="textPersonName"
+                android:labelFor="@+id/editText_nome"
+                android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/editText_descricaolonga"
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Descrição Longa" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editText_descricaocurta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Descrição curta"
+                android:inputType="textPersonName"
+                android:labelFor="@+id/editText_descricaocurta"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editText_descricaolonga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Descrição Longa"
+                android:inputType="textPersonName"
+                android:labelFor="@+id/editText_descricaolonga" />
+
+        </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,8 +78,7 @@
                 android:id="@+id/textView"
                 android:layout_width="124dp"
                 android:layout_height="wrap_content"
-                android:text="Categoria"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                android:text="Categoria" />
 
             <Spinner
                 android:id="@+id/spinner_categoria"
@@ -65,26 +86,50 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editText_local"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:singleLine="true"
-            android:text="Local" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editText_url"
+            <EditText
+                android:id="@+id/editText_local"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Local"
+                android:inputType="textPersonName"
+                android:labelFor="@+id/editText_local"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:singleLine="true"
-            android:text="url da imagem" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editText_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="url da imagem"
+                android:labelFor="@+id/editText_url"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_salvarcad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:layout_weight="1"
+        android:onClick="Salvar"
+        android:text="Salvar" />
 
     <Button
         android:id="@+id/button_voltar"
@@ -95,13 +140,12 @@
         android:text="Voltar" />
 
     <Button
-        android:id="@+id/button_salvarcad"
+        android:id="@+id/button_logoff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
         android:layout_weight="1"
-        android:onClick="Salvar"
-        android:text="Salvar" />
+        android:onClick="Sair"
+        android:text="Fazer logoff" />
 
     <Button
         android:id="@+id/button_limpar"

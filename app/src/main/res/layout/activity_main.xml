@@ -5,33 +5,33 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="felipemartins.com.br.tourappreserv.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="felipemartins.com.br.tourappreserv.MainActivity">
 
     <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@color/colorPrimary"
         android:id="@+id/imageButton_destaques"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:onClick="destaques"/>
-
-    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@color/colorAccent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="destaques"
+        app:srcCompat="@color/colorPrimary" />
+
+    <ImageButton
         android:id="@+id/imageButton_promo"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:onClick="promo"/>
-
-    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@color/colorPrimaryDark"
-        android:id="@+id/imageButton_tudo"
         android:layout_weight="1"
         android:clickable="true"
-        android:onClick="tudo"/>
+        android:onClick="promo"
+        app:srcCompat="@color/colorAccent" />
+
+    <ImageButton
+        android:id="@+id/imageButton_tudo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:onClick="tudo"
+        app:srcCompat="@color/colorPrimaryDark" />
 </LinearLayout>

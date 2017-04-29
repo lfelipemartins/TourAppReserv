@@ -6,7 +6,15 @@ package felipemartins.com.br.tourappreserv.models;
 
 public class User {
 
-    public String login, senha, status, token;
+    public String login, senha, status, token, salvar;
+
+    public String getSalvar() {
+        return salvar;
+    }
+
+    public void setSalvar(String salvar) {
+        this.salvar = salvar;
+    }
 
     public String getLogin() {
         return login;
