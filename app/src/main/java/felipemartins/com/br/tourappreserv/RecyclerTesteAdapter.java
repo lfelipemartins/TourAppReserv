@@ -68,6 +68,7 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
 
                     clickRecyclerViewInterface.onCustomClick(mList.get(getLayoutPosition()));
 
+
                 }
             });
         }

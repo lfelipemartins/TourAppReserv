@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -67,9 +68,10 @@ public class WebDonw implements Callback {
 
         try {
             JSONObject jsonObject = new JSONObject(result);
-            JSONArray jsonarray = jsonObject.getJSONArray("data");
+            JSONArray jsonarray = jsonObject.getJSONArray("list");
             for (int i = 0; i < jsonarray.length(); i++) {
                 JSONObject obj = jsonarray.getJSONObject(i);
+
                 String nom = obj.getString("nome");
                 String cur = obj.getString("desc_curta");
                 String lon = obj.getString("desc_long");
@@ -82,9 +84,9 @@ public class WebDonw implements Callback {
                 String cat;
 
                 if (promo == 1 && padr == 1) {
-                    cat = "Promoção";
+                    cat = "Promoções";
                 } else if (dest == 1 && padr == 1) {
-                    cat = "Destaque";
+                    cat = "Destaques";
                 } else {
                     cat = "Padrão";
                 }
@@ -92,7 +94,8 @@ public class WebDonw implements Callback {
                 Local localidade = new Local(nom, cur, lon, loc, cat, url);
                 localidade.save();
 
-                Toast.makeText(activity, "ID: " + obj.getString("id"), Toast.LENGTH_SHORT).show();
+                Log.d("Item salvo: ", nom + " " + cur + " " + lon + " " + loc + " " + cat + " " + url);
+
 
             }
 

@@ -10,6 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,6 +115,8 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     @Override
     public void onCustomClick(Object object) {
 
+        Intent i = new Intent(this, DetalhesActivity.class);
+        startActivity(i);
 
     }
 
@@ -129,25 +137,9 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     }
 
     public void cadastrobutton (View v){
-
         Intent i = new Intent(this, CadastroActivity.class);
         startActivity(i);
         finish();
-
     }
-
-
-    public void itemClick() {
-
-
-
-    }
-
-
-
-
-
-
-
 
 }
