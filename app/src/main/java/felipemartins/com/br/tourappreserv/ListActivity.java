@@ -17,9 +17,10 @@ import felipemartins.com.br.tourappreserv.models.Local;
 
 public class ListActivity extends AppCompatActivity implements ClickRecyclerView_Interface {
 
+    public String busca, categoria;
+    RecyclerTesteAdapter adapter;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    RecyclerTesteAdapter adapter;
     private List<Local> locaisListas = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
 
@@ -37,13 +38,31 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         setaButtons();
         listenersButtons();
 
+        busca = getIntent().getExtras().getString("busca");
+
         List<Local> loc = Local.listAll(Local.class);
 
         for (Local a: loc){
             Local lugar = new Local();
-            lugar.setNome(a.getNome().toString());
-
-            locaisListas.add(lugar);
+            lugar.setCategoria(a.getCategoria());
+            if (busca.equals("destaque") && lugar.getCategoria().equals("Destaques")) {
+                lugar.setNome(a.getNome());
+                lugar.setDescricaoCurta(a.getDescricaoCurta());
+                lugar.setLocal(a.getLocal());
+                locaisListas.add(lugar);
+            }
+            if (busca.equals("promo") && lugar.getCategoria().equals("Promoções")) {
+                lugar.setNome(a.getNome());
+                lugar.setDescricaoCurta(a.getDescricaoCurta());
+                lugar.setLocal(a.getLocal());
+                locaisListas.add(lugar);
+            }
+            if (busca.equals("tudo")) {
+                lugar.setNome(a.getNome());
+                lugar.setDescricaoCurta(a.getDescricaoCurta());
+                lugar.setLocal(a.getLocal());
+                locaisListas.add(lugar);
+            }
             adapter.notifyDataSetChanged();
         }
 
@@ -51,9 +70,18 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-
 
     }
 
@@ -68,6 +96,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         mRecyclerView.setAdapter(adapter);
     }
 
+
     public void setaButtons(){
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_fabteste);
@@ -79,8 +108,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
      */
     @Override
     public void onCustomClick(Object object) {
-        Local local = (Local) object;
-        String nome = local.getNome();
+
 
     }
 
@@ -95,16 +123,6 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
             @Override
             public void onClick(View v) {
 
-                //Intent i = new Intent(this, CadastroActivity.class);
-                //startActivity(i);
-
-              //  Local local1 = new Local();
-               // local1.setNome("Feirinha");
-
-                //Adiciona a lista e avisa o adapter que o conteúdo
-                //da lista foi alterado
-                //locaisListas.add(local1);
-                //adapter.notifyDataSetChanged();
 
             }
         });
@@ -115,6 +133,13 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         Intent i = new Intent(this, CadastroActivity.class);
         startActivity(i);
         finish();
+
+    }
+
+
+    public void itemClick() {
+
+
 
     }
 

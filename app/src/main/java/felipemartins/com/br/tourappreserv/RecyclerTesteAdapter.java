@@ -50,14 +50,16 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
 
     protected class RecyclerTesteViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView viewNome;
-        protected TextView viewCurta;
+        protected TextView viewNome, viewCurta, viewLocal;
+
 
         public RecyclerTesteViewHolder(final View itemView) {
             super(itemView);
 
             viewNome = (TextView) itemView.findViewById(R.id.textview_nome);
             viewCurta = (TextView) itemView.findViewById(R.id.textview_desccurta);
+            viewLocal = (TextView) itemView.findViewById(R.id.textview_local);
+
 
             //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -55,14 +55,14 @@ public class CadastroActivity extends AppCompatActivity {
         String lon = longa.getText().toString();
         String loc = local.getText().toString();
         //String cat = categoria.getText().toString();
-        String cat = spinner.getAdapter().toString();
+        String cat = spinner.getSelectedItem().toString();
         String url = urlimg.getText().toString();
-
         Local localidade = new Local(nom, cur, lon, loc, cat, url);
+        localidade.setCategoria(spinner.getSelectedItem().toString());
         localidade.save();
         Toast.makeText(this, "Cadastro realizado", Toast.LENGTH_SHORT).show();
 
-        Intent i = new Intent(this, ListActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
 
@@ -72,7 +72,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     public void Voltar(View v){
 
-        Intent i = new Intent(this, ListActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
 
@@ -84,7 +84,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         Local.deleteAll(Local.class);
 
-        Intent i = new Intent(this, ListActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
 

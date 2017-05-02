@@ -8,8 +8,17 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import felipemartins.com.br.tourappreserv.models.Auth;
+import felipemartins.com.br.tourappreserv.models.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,30 +28,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         imageView = (ImageButton) findViewById(R.id.imageButton_destaques);
         imageView = (ImageButton) findViewById(R.id.imageButton_promo);
         imageView = (ImageButton) findViewById(R.id.imageButton_tudo);
 
+        WebDonw web = new WebDonw();
+
+        try {
+            web.donw(this, this, "https://tourappreserv.herokuapp.com/pointsjson");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
-    public void destaques(View v){
 
+    public void destaques(View v) {
         Intent i = new Intent(this, ListActivity.class);
+        i.putExtra("busca", "destaque");
         startActivity(i);
+        finish();
 
     }
     public void promo(View v){
 
         Intent i = new Intent(this, ListActivity.class);
+        i.putExtra("busca", "promo");
         startActivity(i);
+        finish();
 
     }
     public void tudo(View v){
 
         Intent i = new Intent(this, ListActivity.class);
+        i.putExtra("busca", "tudo");
         startActivity(i);
+        finish();
 
     }
 
