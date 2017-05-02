@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             WebDonw web = new WebDonw();
 
             try {
-                web.donw(this, this, "https://api.myjson.com/bins/67zdp");
+                web.donw(this, this, "https://tourappreserv.herokuapp.com/points.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }

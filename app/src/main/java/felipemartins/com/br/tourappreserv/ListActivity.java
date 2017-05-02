@@ -9,9 +9,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +31,8 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Local> locaisListas = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
+
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,12 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
             adapter.notifyDataSetChanged();
         }
 
+
+        imageView = (ImageView) findViewById(R.id.imgpequena);
+
+        // Picasso.with(this.getApplicationContext())
+        //        .load("http://www.paraibadebate.com.br/wp-content/uploads/2015/11/joao-pessoa-pb-5.jpg")
+        //        .into(imageView);
 
     }
 
@@ -125,18 +135,17 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
      */
     public void listenersButtons() {
 
-
-
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                cadastrobutton();
 
             }
         });
     }
 
-    public void cadastrobutton (View v){
+    public void cadastrobutton() {
         Intent i = new Intent(this, CadastroActivity.class);
         startActivity(i);
         finish();

@@ -30,12 +30,6 @@
         android:layout_margin="18dp"
         android:clickable="true"/>
 
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:onClick="cadastrobutton" />
 
 
 </RelativeLayout>

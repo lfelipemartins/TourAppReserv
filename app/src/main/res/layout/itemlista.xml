@@ -37,29 +37,38 @@
                     android:id="@+id/textview_nome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:lines="1"
                     android:text="Teste do nome"
-                    android:textSize="14dp" />
+                    android:textAllCaps="true"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textview_desccurta"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLength="15"
+                    android:layout_height="33dp"
+                    android:lines="2"
+                    android:maxLength="60"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/textview_local"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:lines="1"
                     android:text="TextView" />
 
             </LinearLayout>
 
             <Button
                 android:id="@+id/detalhes"
-                android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:text="Ver" />
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="67dp"
+                android:layout_height="35dp"
+                android:layout_weight="0.19"
+                android:text="Reservar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@color/cardview_light_background" />
 
         </LinearLayout>
 

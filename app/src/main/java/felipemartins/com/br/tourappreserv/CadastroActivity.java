@@ -68,6 +68,15 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+
+    }
 
 
     public void Voltar(View v){

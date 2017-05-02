@@ -68,7 +68,7 @@ public class WebDonw implements Callback {
 
         try {
             JSONObject jsonObject = new JSONObject(result);
-            JSONArray jsonarray = jsonObject.getJSONArray("list");
+            JSONArray jsonarray = jsonObject.getJSONArray("points");
             for (int i = 0; i < jsonarray.length(); i++) {
                 JSONObject obj = jsonarray.getJSONObject(i);
 
