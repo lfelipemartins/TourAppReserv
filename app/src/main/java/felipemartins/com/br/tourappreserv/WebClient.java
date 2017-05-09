@@ -94,7 +94,7 @@ public class WebClient implements Callback {
                 activity.finish();
 
             } else {
-                Toast.makeText(activity, "Ops, ocorreu algum problema, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(activity, "Ops, ocorreu algum problema, tente novamente mais tarde.", Toast.LENGTH_LONG).show();
             }
 
 

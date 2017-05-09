@@ -13,32 +13,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imgpequena"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_notification_overlay" />
+                android:padding="2dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="6"
+                android:layout_weight="20"
                 android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:paddingLeft="12dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textview_nome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lines="1"
-                    android:text="Teste do nome"
+                    android:text=""
                     android:textAllCaps="true"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -49,24 +47,25 @@
                     android:layout_height="33dp"
                     android:lines="2"
                     android:maxLength="60"
-                    android:text="TextView" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/textview_local"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lines="1"
-                    android:text="TextView" />
+                    android:text="" />
 
             </LinearLayout>
+
 
             <Button
                 android:id="@+id/detalhes"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="67dp"
                 android:layout_height="35dp"
-                android:layout_weight="0.19"
-                android:text="Reservar"
+                android:layout_weight="2"
+                android:text="@string/reservar"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:textColor="@color/cardview_light_background" />
 

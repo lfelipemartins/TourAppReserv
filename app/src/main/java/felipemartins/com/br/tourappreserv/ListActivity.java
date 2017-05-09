@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -59,18 +60,24 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
                 lugar.setNome(a.getNome());
                 lugar.setDescricaoCurta(a.getDescricaoCurta());
                 lugar.setLocal(a.getLocal());
+                lugar.setUrlImg(a.getUrlImg());
+                lugar.setDescricaolonga(a.getDescricaolonga());
                 locaisListas.add(lugar);
             }
             if (busca.equals("promo") && lugar.getCategoria().equals("Promoções")) {
                 lugar.setNome(a.getNome());
                 lugar.setDescricaoCurta(a.getDescricaoCurta());
                 lugar.setLocal(a.getLocal());
+                lugar.setUrlImg(a.getUrlImg());
+                lugar.setDescricaolonga(a.getDescricaolonga());
                 locaisListas.add(lugar);
             }
             if (busca.equals("tudo")) {
                 lugar.setNome(a.getNome());
                 lugar.setDescricaoCurta(a.getDescricaoCurta());
                 lugar.setLocal(a.getLocal());
+                lugar.setUrlImg(a.getUrlImg());
+                lugar.setDescricaolonga(a.getDescricaolonga());
                 locaisListas.add(lugar);
             }
             adapter.notifyDataSetChanged();
@@ -124,6 +131,11 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
      */
     @Override
     public void onCustomClick(Object object) {
+
+        Local local = new Local();
+
+
+
 
         Intent i = new Intent(this, DetalhesActivity.class);
         startActivity(i);

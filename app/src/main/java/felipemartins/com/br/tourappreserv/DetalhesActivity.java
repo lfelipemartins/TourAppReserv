@@ -17,9 +17,9 @@ import android.widget.Toast;
 public class DetalhesActivity extends AppCompatActivity {
 
 
+    public String nome = "";
+    public String quarto = "";
     private AlertDialog alerta;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +43,20 @@ public class DetalhesActivity extends AppCompatActivity {
 
 
     private void custonDialog() {
-        //LayoutInflater é utilizado para inflar nosso layout em uma view.
-        //-pegamos nossa instancia da classe
         LayoutInflater li = getLayoutInflater();
 
-        //inflamos o layout alerta.xml na view
+        //infla o layout  na view
         View view = li.inflate(R.layout.enviar_email, null);
 
         EditText etNome = (EditText) findViewById(R.id.editText_nomeCliente);
         EditText etQuarto = (EditText) findViewById(R.id.editText_quartoCliente);
 
-        final String body = "Foi solicitado uma reserva para " + etNome.getText().toString() + " Hospedado no quarto " + etQuarto.getText().toString();
+        nome = etNome.getText().toString();
+        quarto = etQuarto.getText().toString();
 
-        //definimos para o botão do layout um clickListener
+        final String body = "Foi solicitado uma reserva para " + nome + " Hospedado no quarto " + quarto;
+
+        // botão do layout um clickListener
         view.findViewById(R.id.bt).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 //exibe um Toast informativo.
