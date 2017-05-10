@@ -2,22 +2,16 @@ package felipemartins.com.br.tourappreserv;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +37,6 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         setSupportActionBar(toolbar);
 
 
-
         setaRecyclerView();
 
         setaButtons();
@@ -53,7 +46,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
 
         List<Local> loc = Local.listAll(Local.class);
 
-        for (Local a: loc){
+        for (Local a : loc) {
             Local lugar = new Local();
             lugar.setCategoria(a.getCategoria());
             if (busca.equals("destaque") && lugar.getCategoria().equals("Destaques")) {
@@ -108,7 +101,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
 
     }
 
-    public void setaRecyclerView(){
+    public void setaRecyclerView() {
 
         //Aqui é instanciado o Recyclerview
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_recyclerteste);
@@ -120,7 +113,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     }
 
 
-    public void setaButtons(){
+    public void setaButtons() {
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_fabteste);
 
@@ -132,12 +125,24 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     @Override
     public void onCustomClick(Object object) {
 
-        Local local = new Local();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String nomeSP = sharedPref.getString("nome", "");
 
+        String nome = "";
+        String descLonga = "";
+        String url = "";
 
-
+        List<Local> loc = Local.find(Local.class, "nome = ?", nomeSP);
+        for (Local a : loc) {
+            nome = a.getNome();
+            descLonga = a.getDescricaolonga();
+            url = a.getUrlImg();
+        }
 
         Intent i = new Intent(this, DetalhesActivity.class);
+        i.putExtra("nome", nome);
+        i.putExtra("descLonga", descLonga);
+        i.putExtra("urlimg", url);
         startActivity(i);
 
     }
@@ -158,7 +163,9 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     }
 
     public void cadastrobutton() {
-        Intent i = new Intent(this, CadastroActivity.class);
+
+
+        Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
         finish();
     }

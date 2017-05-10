@@ -6,19 +6,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class DetalhesActivity extends AppCompatActivity {
 
 
     public String nome = "";
     public String quarto = "";
+    public String nome2, descLong, url;
+    public TextView eTdesc;
+    public ImageView urllocal;
     private AlertDialog alerta;
 
     @Override
@@ -39,6 +47,27 @@ public class DetalhesActivity extends AppCompatActivity {
 
             }
         });
+
+        urllocal = (ImageView) findViewById(R.id.detalhesbackdrop);
+        eTdesc = (TextView) findViewById(R.id.detalhes_long);
+
+
+        descLong = getIntent().getExtras().getString("descLonga");
+        url = getIntent().getExtras().getString("urlimg");
+        nome2 = getIntent().getExtras().getString("nome");
+
+
+        Picasso.with(this).load(url).into(urllocal);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        assert actionBar != null;
+        actionBar.setTitle(nome2);
+
+        eTdesc.setText(descLong);
+
+
+
     }
 
 

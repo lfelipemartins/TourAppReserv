@@ -1,7 +1,9 @@
 package felipemartins.com.br.tourappreserv;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,17 +43,33 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
     }
 
     @Override
-    public void onBindViewHolder(RecyclerTesteViewHolder viewHolder, int i) {
-        Local local = mList.get(i);
+    public void onBindViewHolder(final RecyclerTesteViewHolder viewHolder, final int i) {
+        final Local local = mList.get(i);
 
         Uri uri = Uri.parse(local.getUrlImg());
-        Context context = viewHolder.listURL.getContext();
+        final Context context = viewHolder.listURL.getContext();
 
         Picasso.with(context).load(uri).transform(new CropCircleTransformation()).into(viewHolder.listURL);
 
         viewHolder.viewNome.setText(local.getNome());
         viewHolder.viewCurta.setText(local.getDescricaoCurta());
         viewHolder.viewLocal.setText(local.getLocal());
+
+        //Setup the click listener
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("nome", local.getNome());
+                editor.commit();
+
+                clickRecyclerViewInterface.onCustomClick(mList.get(i));
+
+
+            }
+        });
 
     }
 
@@ -77,20 +95,7 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
             listURL = (ImageView) itemView.findViewById(R.id.imgpequena);
 
 
-            //Setup the click listener
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    //Local local = mList.get(getLayoutPosition());
-
-                    //long id = local.getId();
-
-                    clickRecyclerViewInterface.onCustomClick(mList.get(getLayoutPosition()));
-
-
-                }
-            });
         }
     }
 

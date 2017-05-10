@@ -119,5 +119,6 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="title_activity_detalhes">DetalhesActivity</string>
     <string name="reservar">Reservar</string>
+    <string name="title_activity_maps">Sua Rota</string>
 
 </resources>
