@@ -6,15 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Stack;
 
 import felipemartins.com.br.tourappreserv.models.User;
 import okhttp3.Call;
@@ -61,7 +58,6 @@ public class WebClient implements Callback {
     public void onResponse(Call call, Response response) throws IOException {
         result = response.body().string();
         System.out.print(result);
-
 
         try {
 
