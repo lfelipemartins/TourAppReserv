@@ -1,6 +1,8 @@
 package felipemartins.com.br.tourappreserv;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
@@ -27,18 +29,25 @@ import jp.wasabeef.picasso.transformations.CropTransformation;
 public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdapter.RecyclerTesteViewHolder> {
 
     public static ClickRecyclerView_Interface clickRecyclerViewInterface;
-    Context mctx;
+    private Activity mAct;
     private List<Local> mList;
 
-    public RecyclerTesteAdapter(Context ctx, List<Local> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
-        this.mctx = ctx;
+    public RecyclerTesteAdapter(Activity act, List<Local> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
+        this.mAct = act;
         this.mList = list;
         this.clickRecyclerViewInterface = clickRecyclerViewInterface;
     }
 
+    public RecyclerTesteAdapter(Activity act, List<Local> list) {
+        this.mAct = act;
+        this.mList = list;
+        this.clickRecyclerViewInterface = null;
+    }
+
     @Override
     public RecyclerTesteViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemlista, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.itemlista, viewGroup, false);
         return new RecyclerTesteViewHolder(itemView);
     }
 
@@ -59,6 +68,7 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+/*
 
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
                 SharedPreferences.Editor editor = sharedPref.edit();
@@ -66,7 +76,12 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
                 editor.commit();
 
                 clickRecyclerViewInterface.onCustomClick(mList.get(i));
+*/
 
+                Intent intent = new Intent(mAct.getBaseContext(), DetalhesActivity.class);
+                intent.putExtra("nome", local.getNome());
+                // intent.putExtra("idLocal", local.getId());
+                mAct.startActivity(intent);
 
             }
         });
@@ -75,6 +90,7 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
 
     @Override
     public int getItemCount() {
+
         return mList.size();
     }
 

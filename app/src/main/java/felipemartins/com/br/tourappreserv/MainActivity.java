@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         verificaConexao();
 
         //evita que ao sair o usuario possa voltar a essa tela sem fazer login
-        lerToken(this, this);
+        //lerToken(this, this);
 
     }
 

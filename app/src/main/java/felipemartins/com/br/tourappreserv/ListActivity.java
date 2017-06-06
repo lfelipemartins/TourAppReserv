@@ -18,7 +18,7 @@ import java.util.List;
 
 import felipemartins.com.br.tourappreserv.models.Local;
 
-public class ListActivity extends AppCompatActivity implements ClickRecyclerView_Interface {
+public class ListActivity extends AppCompatActivity {
 
     public String busca, categoria;
     RecyclerTesteAdapter adapter;
@@ -108,7 +108,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        adapter = new RecyclerTesteAdapter(this, locaisListas, this);
+        adapter = new RecyclerTesteAdapter(this, locaisListas);
         mRecyclerView.setAdapter(adapter);
     }
 
@@ -122,7 +122,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     /**
      * Aqui é o método onde trata o clique em um item da lista
      */
-    @Override
+    /*@Override
     public void onCustomClick(Object object) {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -145,7 +145,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
         i.putExtra("urlimg", url);
         startActivity(i);
 
-    }
+    }*/
 
     /**
      * Chama os listeners para os botões
@@ -165,7 +165,7 @@ public class ListActivity extends AppCompatActivity implements ClickRecyclerView
     public void cadastrobutton() {
 
 
-        Intent i = new Intent(this, MapsActivity.class);
+        Intent i = new Intent(this, CadastroActivity.class);
         startActivity(i);
         finish();
     }

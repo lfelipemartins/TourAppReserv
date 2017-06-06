@@ -1,7 +1,9 @@
 package felipemartins.com.br.tourappreserv;
 
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,8 +12,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import felipemartins.com.br.tourappreserv.models.Local;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    public String nome;
     private GoogleMap mMap;
 
     @Override
@@ -22,6 +31,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        nome = getIntent().getExtras().getString("nome");
+
 
     }
 
@@ -37,13 +49,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        List<android.location.Address> addressList = null;
 
+        String location = nome + ", João Pessoa, PB";
+
+        if (location != null || location.length() > 0) {
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location, 1);
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            android.location.Address address = addressList.get(0);
+            String locality = address.getLocality();
+            Toast.makeText(this, locality, Toast.LENGTH_LONG).show();
+            double latitude = address.getLatitude();
+            double longitude = address.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Aqui!"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18.0f));
+
+        }
 
     }
+
 }
